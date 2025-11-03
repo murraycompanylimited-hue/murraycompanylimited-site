@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Murray Company Limited — SMS Opt-In</title>
+<meta name="description" content="Customer-requested SMS consent for quotes, scheduling, service updates, and product inquiries.">
+<style>
+  :root {
+    --bg: #0b0b0b; --card: #111214; --text: #f5f5f5; --muted: #bdbdbd; --accent: #d4af37;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 24px; }
+  header { padding: 28px 0; text-align: center; }
+  h1 { margin: 0 0 6px; font-size: clamp(1.7rem, 4vw, 2.6rem); }
+  .tag { color: var(--muted); }
+  .card { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.10); border-radius: 16px; padding: 20px; margin: 16px 0;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+  a { color: var(--accent); }
+  label { display:block; margin:10px 0 6px; font-weight:600; }
+  input[type='text'], input[type='tel'] {
+    width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.14);
+    background:#0e0f11; color:var(--text);
+  }
+  .check { display:flex; gap:12px; align-items:flex-start; margin:12px 0; }
+  .btn { display:inline-block; padding:12px 16px; border-radius:12px;
+    border:1px solid rgba(212,175,55,0.45); color:var(--text);
+    background: radial-gradient(120% 120% at 10% 10%, rgba(212,175,55,0.23), rgba(212,175,55,0.05));
+    font-weight:700; text-decoration:none; }
+  footer { text-align:center; color:var(--muted); padding:28px 0 40px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Murray Company Limited</h1>
+  <div class="tag">Customer-Requested SMS Consent</div>
+</header>
+
+<section class="card">
+  <h2>SMS Text Consent</h2>
+  <p>By submitting this form or texting our toll-free number, you agree to receive SMS communications from <strong>Murray Company Limited</strong> related to quotes, scheduling, service updates, and product inquiries that you request.</p>
+  <ul>
+    <li>Message frequency varies based on your interaction</li>
+    <li>Standard messaging & data rates may apply</li>
+    <li>Reply <strong>STOP</strong> to cancel at any time</li>
+    <li>Reply <strong>HELP</strong> for assistance</li>
+    <li>No third-party marketing or data sharing</li>
+  </ul>
+</section>
+
+<section class="card">
+<form method="post" action="#" id="optform">
+<label for="name">Name</label>
+<input id="name" name="name" type="text" placeholder="Your name">
+<label for="phone">Mobile Number</label>
+<input id="phone" name="phone" type="tel" placeholder="+1 (___) ___-____">
+<label class="check">
+  <input id="agree" name="agree" type="checkbox" required>
+  <span>I agree to receive SMS updates about my requested services.</span>
+</label>
+<button class="btn" type="submit">Submit & Opt-In</button>
+<p style="margin-top:10px;color:#bdbdbd;font-size:.9rem;">You can also text our toll-free number directly to start a conversation.</p>
+</form>
+</section>
+
+<section class="card">
+  <h2>Contact</h2>
+  <p><strong>Murray Company Limited</strong><br>
+  General Delivery, Marietta, OH 45750-9999<br>
+  <a href="mailto:whitemarketunlimited@proton.me">whitemarketunlimited@proton.me</a>
+  </p>
+</section>
+
+<footer>&copy; 2025 Murray Company Limited • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></footer>
+</div>
+<script>
+document.getElementById('optform').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Thanks — you’re opted in. We’ll text you shortly.');
+});
+</script>
+</body>
+</html>
