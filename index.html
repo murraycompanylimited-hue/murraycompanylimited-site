@@ -1,49 +1,235 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Murray Company Limited<index.html/title>
-<meta name="description" content="Construction & industrial supply — estimates, scheduling, and service desk.">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>House of Wines — Reservations</title>
 <style>
-  :root {
-    --bg: #0b0b0b; --card: #111214; --text: #f5f5f5; --muted: #bdbdbd; --accent: #d4af37;
+  :root{
+    --bg:#faf3e7; --panel:#fff8ef; --ink:#2a2a2a; --accent:#7a3e00; --muted:#7a7a7a;
+    --radius:16px;
   }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--text);
-    font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
-  .wrap { max-width: 940px; margin: 0 auto; padding: 24px; }
-  header { padding: 28px 0; text-align: center; }
-  h1 { margin: 0 0 6px; font-size: clamp(1.7rem, 4vw, 2.6rem); }
-  .tag { color: var(--muted); }
-  .card { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.10); border-radius: 16px; padding: 20px; margin: 16px 0;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
-  a { color: var(--accent); }
-  footer { color: var(--muted); font-size: 0.92rem; text-align: center; padding: 28px 0 40px; }
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+  .wrap{max-width:840px;margin:28px auto;padding:0 16px}
+  .card{background:var(--panel);border:1px solid #eddcc6;border-radius:var(--radius);box-shadow:0 8px 28px rgba(0,0,0,.06);padding:22px}
+  h1{font-size:clamp(26px,4.5vw,38px);line-height:1.15;margin:0 0 10px;text-align:center}
+  h1 em{font-style:normal;color:var(--accent)}
+  p.lead{margin:0 0 20px;text-align:center;color:var(--muted)}
+  form{display:grid;gap:16px}
+  .field{display:grid;gap:8px}
+  label{font-weight:600}
+  select, input, textarea{
+    width:100%; font-size:16px; padding:14px 12px; border:1px solid #e3d3be; border-radius:12px; background:#fff;
+  }
+  .row{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+  @media (max-width:640px){.row{grid-template-columns:1fr}}
+  .pill{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px dashed #d9c7ad;border-radius:999px;padding:8px 12px;color:#5b4630}
+  .buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .btn{
+    appearance:none;border:0;border-radius:12px;padding:12px 14px;font-weight:700;cursor:pointer;
+    background:#201a14;color:#fff
+  }
+  .btn.secondary{background:#e9dfd2;color:#2a1f13;border:1px solid #d9c7ad}
+  .muted{color:var(--muted);font-size:13px}
+  .grid{display:grid;gap:8px}
+  .footnote{margin-top:10px;color:#6f6f6f;font-size:13px}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <h1>Murray Company Limited</h1>
-  <div class="tag">Construction & Industrial Supply — Service Desk</div>
-</header>
+  <div class="wrap">
+    <div class="card">
+      <h1>House of Wines — <em>Reservations</em></h1>
+      <p class="lead">Pick your time, table, and lock in tonight’s special.</p>
 
-<section class="card">
-  <h2>Welcome</h2>
-  <p>For quotes, scheduling, or product inquiries, text our toll-free number or use the consent page below.</p>
-  <p><a href="/opt-in.html">SMS Opt-In</a> • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></p>
-</section>
+      <form id="resForm" autocomplete="on">
+        <div class="field">
+          <label for="date">Date</label>
+          <input id="date" name="date" type="date" required />
+          <div class="muted">Open hours: Sun–Thu 11:00–21:00 · Fri–Sat 11:00–23:00</div>
+        </div>
 
-<section class="card">
-  <h2>Contact</h2>
-  <p><strong>Murray Company Limited</strong><br>
-  General Delivery, Marietta, OH 45750-9999<br>
-  <a href="mailto:whitemarketunlimited@proton.me">whitemarketunlimited@proton.me</a></p>
-</section>
+        <div class="row">
+          <div class="field">
+            <label for="time">Time</label>
+            <select id="time" name="time" required>
+              <!-- 15-minute slots 4–9:45 default; adjust as needed -->
+            </select>
+          </div>
+          <div class="field">
+            <label for="party">Party size</label>
+            <select id="party" name="party" required>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8+">8+</option>
+            </select>
+          </div>
+        </div>
 
-<footer>&copy; 2025 Murray Company Limited • All rights reserved.</footer>
-</div>
+        <div class="field">
+          <label for="area">Area</label>
+          <select id="area" name="area">
+            <option>Main Dining</option>
+            <option>Windows (east/south walls)</option>
+            <option>Back Room</option>
+            <option>Upper Patio (river)</option>
+            <option>Lower Patio (river)</option>
+            <option>Side Patio</option>
+            <option>No preference</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="table">Table (optional)</label>
+          <select id="table" name="table">
+            <option value="">No preference</option>
+            <optgroup label="Main Dining">
+              <option value="21">21 (booth · west-facing, no window)</option>
+              <option value="24">24 (booth · window)</option>
+              <option value="30">30 (rounded corner booth · 3 chairs outside · east-facing)</option>
+              <option value="31">31 (near 32)</option>
+              <option value="32">32 (center of room)</option>
+            </optgroup>
+            <optgroup label="Windows">
+              <option value="W1">W1 (north–south along east wall / front)</option>
+              <option value="W3">W3 (east–west along south wall, by Cabernet, far from hostess)</option>
+            </optgroup>
+            <optgroup label="Upper Patio (river)">
+              <option>41</option><option>42</option><option>43</option><option>44</option><option>45</option>
+              <option>50</option>
+            </optgroup>
+            <optgroup label="Lower Patio (river)">
+              <option>61</option><option>62</option><option>63</option><option>64</option><option>65</option>
+              <option>66</option><option>67</option><option>68</option><option>69</option><option>70</option><option>71</option><option>72</option>
+            </optgroup>
+            <optgroup label="Side Patio">
+              <option>81</option><option>82</option><option>83</option><option>84</option><option>85</option><option>86</option>
+              <option>Huge (8–10)</option>
+            </optgroup>
+          </select>
+          <div class="pill" id="tableHint">💡 Tip: 41–45 & 61–68 run along the Muskingum River.</div>
+        </div>
+
+        <div class="field">
+          <label for="name">Your name & mobile</label>
+          <div class="row">
+            <input id="name" name="name" placeholder="Full name" required />
+            <input id="phone" name="phone" inputmode="tel" placeholder="Mobile for confirmations" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Tonight’s Special</label>
+          <div class="grid">
+            <div class="pill" id="specialPill">🍽️ <span id="specialText">We’ll pick the special by date.</span></div>
+            <div class="muted">Wed: Prime Rib · Thu: Poke &amp; Sushi alternate weekly · Fri: Spaghetti</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Notes (allergies, high-chair, occasion…)</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Optional"></textarea>
+        </div>
+
+        <div class="buttons">
+          <button class="btn" type="button" id="smsBtn">Text to Host (Twilio)</button>
+          <button class="btn secondary" type="button" id="emailBtn">Email Confirmation Draft</button>
+        </div>
+
+        <div class="footnote">
+          Boat dock is available but rarely used — add a note if you need boatside.
+        </div>
+      </form>
+    </div>
+  </div>
+
+<script>
+  // ---- time slots (change here if your service hours differ) ----
+  const timeSelect = document.getElementById('time');
+  const openHr = 16, closeHr = 21, stepMin = 15; // 4:00pm–9:45pm
+  for (let h=openHr; h<=closeHr; h++){
+    for (let m=0; m<60; m+=stepMin){
+      const v = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+      const label = new Date(`2000-01-01T${v}:00`).toLocaleTimeString([], {hour:'numeric', minute:'2-digit'});
+      const o=document.createElement('option'); o.value=v; o.textContent=label; timeSelect.appendChild(o);
+    }
+  }
+
+  // ---- default date = today ----
+  const dateEl = document.getElementById('date');
+  const today = new Date(); dateEl.valueAsDate = today;
+
+  // ---- specials logic ----
+  const specialText = document.getElementById('specialText');
+  function isoWeekNumber(d){ // https://en.wikipedia.org/wiki/ISO_week_date
+    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1)/7);
+  }
+  function getSpecialFor(date){
+    const dow = date.getDay(); // 0=Sun..6=Sat
+    if (dow===3) return "Prime Rib (Wednesday)";
+    if (dow===4){ // alternate weekly
+      const wk = isoWeekNumber(date);
+      return (wk % 2 === 0) ? "Sushi (Thursday — even weeks)" : "Poke Bowls (Thursday — odd weeks)";
+    }
+    if (dow===5) return "Spaghetti (Friday)";
+    return "Chef's features & regular menu";
+  }
+  function updateSpecial(){
+    const d = dateEl.valueAsDate || new Date();
+    specialText.textContent = getSpecialFor(d);
+  }
+  dateEl.addEventListener('change', updateSpecial);
+  updateSpecial();
+
+  // ---- build message bodies ----
+  function buildSummary(){
+    const d = dateEl.value;
+    const t = document.getElementById('time').selectedOptions[0].textContent;
+    const party = document.getElementById('party').value;
+    const area = document.getElementById('area').value;
+    const table = document.getElementById('table').value || 'No preference';
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const notes = document.getElementById('notes').value.trim();
+    const spec = specialText.textContent;
+
+    let lines = [
+      `House of Wines Reservation`,
+      `Name: ${name}`,
+      `Mobile: ${phone}`,
+      `Date: ${d}`,
+      `Time: ${t}`,
+      `Party: ${party}`,
+      `Area: ${area}`,
+      `Table: ${table}`,
+      `Special: ${spec}`
+    ];
+    if (notes) lines.push(`Notes: ${notes}`);
+    return lines.join('\n');
+  }
+
+  // ---- SMS (Twilio-hosted number) ----
+  const TWILIO_NUMBER = '+18437902922'; // ← REPLACE with your 843 number
+  document.getElementById('smsBtn').addEventListener('click', ()=>{
+    const body = encodeURIComponent(buildSummary());
+    const link = `sms:${encodeURIComponent(TWILIO_NUMBER)}?&body=${body}`;
+    window.location.href = link;
+  });
+
+  // ---- Email draft (fallback) ----
+  document.getElementById('emailBtn').addEventListener('click', ()=>{
+    const subj = encodeURIComponent('HOW Reservation Request');
+    const body = encodeURIComponent(buildSummary());
+    window.location.href = `mailto:reservations@example.com?subject=${subj}&body=${body}`;
+  });
+</script>
 </body>
 </html>
